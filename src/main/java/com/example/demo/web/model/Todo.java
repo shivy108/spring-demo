@@ -2,94 +2,99 @@ package com.example.demo.web.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 public class Todo {
-    private int id;
-    private String user;
-    private String desc;
-    private Date targetDate;
-    private boolean isDone;
+	private int id;
+	private String user;
+	@Size(min = 5, message = "Enter at least 5 characters")
+	private String desc;
+	private Date targetDate;
+	private boolean isDone;
 
-    public Todo(int id, String user, String desc, Date targetDate,
-            boolean isDone) {
-        super();
-        this.id = id;
-        this.user = user;
-        this.desc = desc;
-        this.targetDate = targetDate;
-        this.isDone = isDone;
-    }
+	public Todo() {
+		super();
+	}
 
-    public int getId() {
-        return id;
-    }
+	public Todo(int id, String user, String desc, Date targetDate, boolean isDone) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.desc = desc;
+		this.targetDate = targetDate;
+		this.isDone = isDone;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getUser() {
-        return user;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setUser(String user) {
-        this.user = user;
-    }
+	public String getUser() {
+		return user;
+	}
 
-    public String getDesc() {
-        return desc;
-    }
+	public void setUser(String user) {
+		this.user = user;
+	}
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
+	public String getDesc() {
+		return desc;
+	}
 
-    public Date getTargetDate() {
-        return targetDate;
-    }
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
 
-    public void setTargetDate(Date targetDate) {
-        this.targetDate = targetDate;
-    }
+	public Date getTargetDate() {
+		return targetDate;
+	}
 
-    public boolean isDone() {
-        return isDone;
-    }
+	public void setTargetDate(Date targetDate) {
+		this.targetDate = targetDate;
+	}
 
-    public void setDone(boolean isDone) {
-        this.isDone = isDone;
-    }
+	public boolean isDone() {
+		return isDone;
+	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        return result;
-    }
+	public void setDone(boolean isDone) {
+		this.isDone = isDone;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Todo other = (Todo) obj;
-        if (id != other.id) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
 
-    @Override
-    public String toString() {
-        return String.format(
-                "Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id,
-                user, desc, targetDate, isDone);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Todo other = (Todo) obj;
+		if (id != other.id) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id, user, desc, targetDate,
+				isDone);
+	}
 
 }

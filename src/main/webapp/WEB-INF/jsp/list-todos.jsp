@@ -1,19 +1,17 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
-<title>First Web Application</title>
-</head>
-
-<body>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+<div class="container">
 	Hi ${name},Here are the list of your todos:
 	<h1>Your Todos</h1>
-	<table>
+	<table class='table table-striped'>
 		<caption>Your Todos are</caption>
 		<thead>
 			<tr>
 				<th>Description</th>
 				<th>Target Date</th>
 				<th>Is it Done?</th>
+				<th>Update</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 
@@ -21,16 +19,21 @@
 			<c:forEach items="${todos}" var="todo">
 				<tr>
 					<td>${todo.desc}</td>
-					<td>${todo.targetDate}</td>
+					<td><fmt:formatDate value="${todo.targetDate}" /></td>
 					<td>${todo.done}</td>
+					<td><a class="btn btn-success" type="button"
+						href='/update-todo?id=${todo.id}'>Update</a>
+					<td><a class='btn btn-warning' type='button'
+						href='/delete-todo?id=${todo.id}'>Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 
 
 	</table>
-	<a href="/add-todo">Add Todo</a>
+	<div>
+		<a class='btn' href="/add-todo">Add Todo</a>
 
-</body>
-
-</html>
+	</div>
+</div>
+<%@ include file="common/footer.jspf"%>
